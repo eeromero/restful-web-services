@@ -1,6 +1,6 @@
 # Interconnecting Flights
 
-URL example : http://localhost:8080/flights/interconnections?departure=DUB&departureDateTime=2020-10-10T18:50&arrivalDateTime=2020-10-20T18:20&arrival=BCN
+URL example : http://localhost:8080/flights/interconnections?departure=DUB&departureDateTime=2020-10-10T18:50&arrivalDateTime=2020-10-11T18:20&arrival=BCN
 ```
 [
     {
