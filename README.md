@@ -7,14 +7,32 @@ The list consists of:
 - all interconnecting flights with a maximun of one stop (DUB-EDI-BCN). For these flights the difference between arrival and next departure is 2h or greater 
 
 
-Inputs Validations
+### Inputs Validations
 - all parameters are required
 - departure and arrival airport can not be the same
 - departure date can not be after than arrival date
 - dates in ISO format
+- departure and arrival have to be 3 letters. Codes in lower case are allowed
 - for all of these validations the application will respond with a bad request response
 
+```aidl
+- url without departure
+{
+    "timestamp": "2020-09-11T05:47:14.61",
+    "status": 400,
+    "error": "BAD_REQUEST",
+    "message": "Required String parameter 'departure' is not present"
+}
 
+- url with departure 1MAD
+{
+    "timestamp": "2020-09-11T05:48:05.378",
+    "status": 400,
+    "error": "BAD_REQUEST",
+    "message": "interconnections.departure: Invalid departure format"
+}
+
+```
 
 URL example : 
 http://localhost:8080/flights/interconnections?departure=DUB&departureDateTime=2020-10-10T18:50&arrivalDateTime=2020-10-11T18:20&arrival=BCN
