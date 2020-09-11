@@ -23,6 +23,13 @@ public class ScheduleFlightsService {
     @Autowired
     private RyanairApiService ryanairApiService;
 
+    /**
+     *  Return all the flights scheduled in a month from departure to arrival
+     * @param departure origin airport
+     * @param arrival destination airport
+     * @param yearMonth month to seacrh flights
+     * @return a timetable of all the flights scheduled in that month
+     */
     public Optional<Timetable> getScheduledFlightsByMonth(String departure, String arrival, YearMonth yearMonth){
         return ryanairApiService
                 .getSchedules(departure, arrival, yearMonth.getYear(), yearMonth.getMonthValue())
@@ -52,6 +59,15 @@ public class ScheduleFlightsService {
                 .map(flights -> new Timetable(departure, arrival, yearMonth, flights));
     }
 
+    /**
+     *  Get all the scheduled flights from departure to arrival between from and to dates
+     * @param departure origin airport
+     * @param arrival destination airport
+     * @param months months between from and to dates
+     * @param from departure date
+     * @param to arrival date
+     * @return list of flights
+     */
     public List<Flight> getScheduledFlights(String departure, String arrival,
                                             List<YearMonth> months, LocalDateTime from, LocalDateTime to) {
         logger.debug("getScheduledFlights: " + departure + " -> " + arrival + " from " + from + " to " + to);
