@@ -1,6 +1,23 @@
 # Interconnecting Flights
+Application returns a list of flights departing from a given departure airport not earlier than the specified departure dateTime and arriving to a given arrival airport not later than the specified arrival dateTime. 
 
-URL example : http://localhost:8080/flights/interconnections?departure=DUB&departureDateTime=2020-10-10T18:50&arrivalDateTime=2020-10-11T18:20&arrival=BCN
+The list consists of:
+
+- direct flights (DUB - BCN)
+- all interconnecting flights with a maximun of one stop (DUB-EDI-BCN). For these flights the difference between arrival and next departure is 2h or greater 
+
+
+Inputs Validations
+- all parameters are required
+- departure and arrival airport can not be the same
+- departure date can not be after than arrival date
+- dates in ISO format
+- for all of these validations the application will respond with a bad request response
+
+
+
+URL example : 
+http://localhost:8080/flights/interconnections?departure=DUB&departureDateTime=2020-10-10T18:50&arrivalDateTime=2020-10-11T18:20&arrival=BCN
 ```
 [
     {
