@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.rest.webservices</groupId>
-	<artifactId>restful-web-services</artifactId>
+	<artifactId>restful-webServices-flights</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>restful-webService-flights</name>
-	<description>Demo project for Spring Boot</description>
+	<name>restful-webServices-flights</name>
+	<description>Project for interconnecting flights</description>
 
 	<properties>
 		<java.version>8</java.version>
@@ -57,5 +57,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

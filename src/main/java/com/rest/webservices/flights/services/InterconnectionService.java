@@ -69,9 +69,9 @@ public class InterconnectionService {
      * @param routesGraph all the routes available
      * @param yearMonths months where the flights need to be searched
      * @param departure airport of origin
-     * @param departureDate
+     * @param departureDate departure date time
      * @param arrival airport of destination
-     * @param arrivalDate
+     * @param arrivalDate arrival date time
      * @param numMaxStops num max stops
      * @return List of interconnections
      */
@@ -95,6 +95,9 @@ public class InterconnectionService {
                     .stream()
                     .map(flight -> new Interconnection(0, Arrays.asList(flight)))
                     .forEach(interconnections::add);
+            if (interconnections.isEmpty()) {
+                interconnections.add(interconnection);
+            }
         } else {
             interconnections.add(interconnection);
         }
@@ -108,7 +111,7 @@ public class InterconnectionService {
             //Get all the routes between departure and arrival airports with i stops
             List<List<String>> routes = routeService.getRoutesWithConnections(routesGraph, departure, arrival, numStop);
             List<List<Flight>> allConnectionsFlights = new ArrayList<>();
-            routes.stream()
+            routes
                     .forEach(
                             route -> {
                                 List<List<Flight>> connectionsFlights =
@@ -134,9 +137,9 @@ public class InterconnectionService {
      *
      * @param route         List of stops (Route)
      * @param yearMonths    list of the months to search
-     * @param departureDate date to departure from origin
-     * @param arrivalDate
-     * @return
+     * @param departureDate flights can not departure before this date
+     * @param arrivalDate  flights can not arrive after this date
+     * @return list of flights
      */
     protected List<List<Flight>> getAllConnectionsFlightsOfARoute(List<String> route, List<YearMonth> yearMonths,
                                                                   LocalDateTime departureDate, LocalDateTime arrivalDate) {

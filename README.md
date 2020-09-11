@@ -34,9 +34,36 @@ The list consists of:
 
 ```
 
-URL example : 
+### URL
+ ```aidl
+
+- departure: departure airport IATA code
+- departureDateTime: departure datetime in the departure time zone and ISO format
+- arrival: arrival airport IATA code
+- arrivalDateTime: arrival datetime in the arrival time zone and ISO format
+
 http://localhost:8080/flights/interconnections?departure=DUB&departureDateTime=2020-10-10T18:50&arrivalDateTime=2020-10-11T18:20&arrival=BCN
+
 ```
+
+ 
+```
+- when there is not flights found 
+http://localhost:8080/flights/interconnections?departure=DUB&arrival=BCN&departureDateTime=2020-10-10T18:50&arrivalDateTime=2020-10-10T23:20
+[
+    {
+        "stops": 0,
+        "legs": []
+    },
+    {
+        "stops": 1,
+        "legs": []
+    }
+]
+
+- Flights found
+http://localhost:8080/flights/interconnections?departure=DUB&departureDateTime=2020-10-10T18:50&arrivalDateTime=2020-10-11T18:20&arrival=BCN
+
 [
     {
         "stops": 0,
@@ -266,3 +293,9 @@ http://localhost:8080/flights/interconnections?departure=DUB&departureDateTime=2
     }
 ]
 ```
+
+### Build .jar file
+
+Generate a .jar by doing maven clean and install
+
+restful-webServices-flights-0.0.1-SNAPSHOT.jar
